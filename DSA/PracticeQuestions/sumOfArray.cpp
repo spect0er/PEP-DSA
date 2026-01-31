@@ -8,8 +8,7 @@ int sumOfArray(int arr[], int size){
 
 int main(){
 
-    int n = 5;
-    int arr[n] = {1,2,3,4,5};
-    cout << "Sum: " << sumOfArray(arr,n);
+    int arr[] = {1,2,3,4,5};
+    cout << "Sum: " << sumOfArray(arr,5);
     return 0;
 }
