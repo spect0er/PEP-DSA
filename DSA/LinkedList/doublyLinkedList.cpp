@@ -18,10 +18,9 @@ void insertAtHead(Node* &head, int val){
         head = newNode;
         return;
     }
-    Node* temp = head;
+    newNode->next = head;
+    head->prev = newNode;
     head = newNode;
-    temp->prev = head;
-    head->next = temp;
 }
 void insertInBetween(Node* &head, int pos, int val){
     if(pos == 1){
@@ -39,9 +38,13 @@ void insertInBetween(Node* &head, int pos, int val){
         temp = temp->next;
         count++;
     }
-    if(count == (pos - 1) && temp->next == NULL){
+    if(count + 1 == pos && temp->next == NULL){
         temp->next = newNode;
         newNode->prev = temp;
+        return;
+    }
+    if(temp->next == NULL){
+        cout << "Position is greater than the number of nodes in the list" << endl;
         return;
     }
     temp->next->prev = newNode;
@@ -54,6 +57,7 @@ void insertAtEnd(Node* &head, int val){
     Node* newNode = new Node(val);
     if(!head){
         head = newNode;
+        return;
     }
     Node* temp = head;
     while(temp->next != NULL){
@@ -75,13 +79,13 @@ void printLinkedList(Node* head){
     cout << endl;
 }
 int main(){
-    Node* head;
+    Node* head = NULL;
     insertAtHead(head,30);
     insertAtHead(head,20);
     insertAtHead(head,10);
     insertAtEnd(head,40);
     printLinkedList(head);
-    insertInBetween(head,5,25);
+    insertInBetween(head,4,25);
     printLinkedList(head);
     return 0;
 }
