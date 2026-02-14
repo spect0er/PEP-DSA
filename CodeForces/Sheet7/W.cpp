@@ -25,31 +25,32 @@ Output
 For each test case print "YES" if your value can reach exactly N
  otherwise, print "NO".
 */
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-void reachValue(int n, int b){
-    if(b == n){
-        cout << "YES" << endl;
-        return;
-    }
-    if(b > n){
-        cout << "NO" << endl;
-        return;
-    }
-    reachValue(n,b*10);
-    reachValue(n,b*20);
-    
+bool reachValue(long long n) {
+    if (n == 1) return true;
+    if (n < 1) return false;
+
+    if (n % 10 == 0 && reachValue(n / 10))
+        return true;
+    if (n % 20 == 0 && reachValue(n / 20))
+        return true;
+
+    return false;
 }
 
-int main(){
+int main() {
     int T;
     cin >> T;
-    while(T--){
-        int n;
+    while (T--) {
+        long long n;
         cin >> n;
-        reachValue(n,1);
+        if(reachValue(n)){
+            cout << "YES" << endl;
+        }else{
+            cout << "NO" << endl;
+        }
     }
-
     return 0;
 }
