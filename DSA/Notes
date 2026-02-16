@@ -1,0 +1,20 @@
+
+->For evaluating prefix we have to iterate from the right side and add elements to the stack
+->when we encounter any operators then we just have two pop the two aboe elements from the stack and perform that particular operation
+ on the two popped operands of that stack then push that value back into the stack
+ -> after iterating return the top of the stack simply.
+
+
+q => 2 4 3 1
+step1: 
+st => 1 3 4 2
+step2: 
+q=> 1 3 4 2
+step3:
+st=> 3 1
+q=> 4 2
+step4:
+q=> 4 2 3 1
+step5:
+st=>2 4
+q=> 3 1
